@@ -1,0 +1,2 @@
+object @result
+attribute :success

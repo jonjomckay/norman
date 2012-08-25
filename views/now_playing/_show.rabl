@@ -1,0 +1,1 @@
+extends 'now_playing/_base'
