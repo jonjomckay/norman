@@ -1,2 +1,2 @@
-object false
-node (:album) { partial('albums/_show', :object => @album) }
+object @album
+extends 'albums/_show'

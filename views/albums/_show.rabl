@@ -1,6 +1,6 @@
 attributes :id, :name, :slug, :mbid, :year
 node(:artist) do |m|
-  partial 'artists/_show', :object => m.artist
+  partial 'artists/_base', :object => m.artist
 end
 node(:image, :if => lambda { |m| m.image }) do |i|
   {
