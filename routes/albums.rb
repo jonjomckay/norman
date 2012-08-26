@@ -52,27 +52,6 @@ class Norman < Sinatra::Base
       @album.update_attributes(params)
 
       render :rabl, :'albums/show'
-
-      #if defined? params[:position]
-      #  position = params[:position]
-      #
-      #  if position =~ /^[-+]?[0-9]+$/
-      #    # if $position is an Integer, then cast to integer and move to new position
-      #    @now_playing.move_to! position.to_i
-      #    status 204 # return 204
-      #  elsif %w'top bottom higher lower'.include? position
-      #    # else if $position is a string and supported by mongoid_orderable, then move to new direction
-      #    @now_playing.move_to! :"#{position}"
-      #    status 204 # return 204
-      #  else
-      #    # else $position is not an integer or a supported string
-      #    status 400 # throw a 400 bad request
-      #    render :rabl, :'status/400'
-      #  end
-      #else
-      #  status 400 # throw a 400 bad request
-      #  render :rabl, :'status/400'
-      #end
     rescue
       status 404
       render :rabl, :'status/404'
