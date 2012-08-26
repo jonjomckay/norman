@@ -3,6 +3,12 @@ class Track
   include Mongoid::Slug
   include Mongoid::Timestamps
 
+  attr_accessible :name, :mbid, :disc, :number, :duration, :year, :filename, :image, :image_id, :artist, :artist_id, :album, :album_id, :genres, :hashtags, :featured_artists, :featured_artist_ids, :composers, :composer_ids, :producers, :producer_ids
+
+  validates_presence_of :name, :number, :duration, :filename, :artist, :album
+
+  validates_uniqueness_of :name, :scope => [:album, :mbid, :year]
+
   field :name
   slug :name
   field :mbid
