@@ -1,15 +1,12 @@
-extends 'albums/_show'
-attributes :mbid
-node(:genres, :if => lambda { |m| !m.genres.empty? }) do |a|
-  a.genres.map { |m| partial 'genres/_show', :object => m }
+attributes :id, :name, :slug, :mbid, :year
+node(:artist) do |m|
+  partial 'artists/_base', :object => m.artist
 end
-node :tracks do |a|
-  a.tracks.map do |t|
-    {
-        :id => t.id,
-        :name => t.name,
-        :number => t.number,
-        :duration => t.duration
-    }
-  end
+node(:image, :if => lambda { |m| m.image }) do |i|
+  {
+      :huge => i.image.image.url,
+      :large => i.image.image.thumb('500x500#').url,
+      :medium => i.image.image.thumb('300x300#').url,
+      :tiny => i.image.image.thumb('75x75#n').url
+  }
 end

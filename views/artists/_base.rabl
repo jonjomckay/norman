@@ -1,10 +1,4 @@
 attributes :id, :name, :slug, :mbid
-node(:albums) do |i|
-  i.albums.count
-end
-node(:tracks) do |i|
-  i.tracks.count
-end
 node(:image, :if => lambda { |m| !m.images.empty? }) do |i|
   {
       :huge => i.images[0].image.url,

@@ -1,4 +1,10 @@
 extends 'artists/_base'
+node(:albums) do |i|
+  i.albums.count
+end
+node(:tracks) do |i|
+  i.tracks.count
+end
 node(:real_name, :if => lambda { |m| m.real_name }) do |a|
   a.real_name
 end
