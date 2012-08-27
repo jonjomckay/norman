@@ -1,30 +1,16 @@
-attributes :id, :name, :slug
-node(:image, :if => lambda { |m| !m.images.empty? }) do |i|
-    {
-        :huge => {
-             :width => i.images[0].image.width,
-             :height => i.images[0].image.height,
-             :url => i.images[0].image.url
-         },
-        :hd => {
-            :width => 1920,
-            :height => 1080,
-            :url => i.images[0].image.thumb('1920x1080#n').url,
-        },
-        :large => {
-            :width => 700,
-            :height => 400,
-            :url => i.images[0].image.thumb('700x400#n').url
-        },
-        :medium => {
-            :width => 300,
-            :height => 200,
-            :url => i.images[0].image.thumb('300x200#n').url
-        },
-        :tiny => {
-            :width => 75,
-            :height => 75,
-            :url => i.images[0].image.thumb('75x75#n').url
-        }
-    }
+extends 'artists/_base'
+node(:real_name, :if => lambda { |m| m.real_name }) do |a|
+  a.real_name
+end
+node(:disambiguation, :if => lambda { |m| m.disambiguation }) do |a|
+  a.disambiguation
+end
+node(:youtube, :if => lambda { |m| m.youtube }) do |i|
+  { :channel => i.youtube, :url => 'http://www.youtube.com/' + i.youtube  }
+end
+node(:similar, :if => lambda { |m| !m.similar_artists.empty? }) do |a|
+  a.similar_artists.to_a.map { |m| partial 'artists/_base', :object => m }
+end
+node(:hashtags, :if => lambda { |m| !m.hashtags.empty? }) do |a|
+  a.hashtags.to_a.map { |m| { :name => m.name } }
 end
