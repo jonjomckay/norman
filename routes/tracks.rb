@@ -25,15 +25,7 @@ class Norman < Sinatra::Base
         headers["Location"] = "/tracks/#{@track.id}"
         status 303 # return 303 see other
       else
-        @track = Track.create!(name: params[:name],
-                               mbid: params[:mbid],
-                               disc: params[:disc],
-                               number: params[:number],
-                               duration: params[:duration],
-                               year: params[:year],
-                               artist: Artist.find(params[:artist_id]),
-                               album: Album.find(params[:album_id]),
-                               filename: params[:filename])
+        @track = Track.create!(params)
 
         # return 201 created & location of new resource
         headers["Location"] = "/tracks/#{@track.id}"
