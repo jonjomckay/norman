@@ -7,7 +7,7 @@ class Norman < Sinatra::Base
   app = Dragonfly[:images].configure_with(:imagemagick) do |c|
     c.datastore = Dragonfly::DataStorage::MongoDataStore.new :db => Mongoid.database
     c.url_host = 'http://0.0.0.0:9292'
-    c.url_format = '/media/:job'
+    c.url_format = '/images/:job'
   end
   app.define_macro_on_include(Mongoid::Document, :image_accessor)
 
