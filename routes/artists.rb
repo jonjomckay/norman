@@ -33,7 +33,7 @@ class Norman < Sinatra::Base
       render :rabl, :'status/404'
     rescue Mongoid::Errors::Validations => e
       status 400 # throw a 400 bad request
-      @error = e
+      @error = e.message
       render :rabl, :'status/400'
     rescue
       status 400 # throw a 400 bad request

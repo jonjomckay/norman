@@ -4,7 +4,7 @@ node :message do
   "Bad request/malformed syntax"
 end
 node(:info, :if => lambda { |m| defined? @error }) do
-  @error.message
+  @error
 end
 node :code do
   400
