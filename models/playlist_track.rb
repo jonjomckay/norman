@@ -1,10 +1,14 @@
 class PlaylistTrack
   include Mongoid::Document
+  include Mongoid::Timestamps::Created
+  include Mongoid::Orderable
 
-  field :order, :type => Integer
+  default_scope order_by(:position => :asc)
 
-  default_scope order_by(:order => :asc)
-
+  #embedded_in :playlist
+  #belongs_to :track
   belongs_to :playlist
   belongs_to :track
+
+  orderable :scope => :playlist
 end

@@ -1,5 +1,6 @@
 require_relative 'albums'
 require_relative 'artists'
-require_relative 'controls'
+require_relative 'media'
 require_relative 'now_playing'
+require_relative 'playlists'
 require_relative 'tracks'
