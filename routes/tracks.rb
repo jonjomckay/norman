@@ -14,7 +14,7 @@ class Norman < Sinatra::Base
       track_criteria = Track.where(name: params[:name],
                                    mbid: params[:mbid],
                                    disc: params[:disc],
-                                   number: params[:number],
+                                   track_number: params[:track_number],
                                    year: params[:year],
                                    artist_id: params[:artist_id],
                                    album_id: params[:album_id],
@@ -37,7 +37,7 @@ class Norman < Sinatra::Base
       render :rabl, :'status/404'
     rescue Mongoid::Errors::Validations => e
       status 400 # throw a 400 bad request
-      @error = e
+      @error = e.message
       render :rabl, :'status/400'
     rescue
       status 400 # throw a 400 bad request
