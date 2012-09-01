@@ -1,4 +1,5 @@
 extends 'tracks/_base'
+attributes :mbid, :filename
 node(:album) do |m|
   partial 'albums/_show', :object => m.album
 end

@@ -1,4 +1,4 @@
-attributes :id, :name, :slug, :mbid, :year
+attributes :id, :name, :slug, :year
 node(:artist) do |m|
   partial 'artists/_base', :object => m.artist
 end

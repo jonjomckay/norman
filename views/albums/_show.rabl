@@ -8,7 +8,7 @@ node :tracks do |a|
     {
         :id => t.id,
         :name => t.name,
-        :number => t.number,
+        :track_number => t.track_number,
         :duration => t.duration
     }
   end
